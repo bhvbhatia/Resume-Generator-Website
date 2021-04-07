@@ -1,0 +1,56 @@
+{% load static %}
+{% load myapps_tags %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>detail</title>
+    <link rel="stylesheet" href="{% static 'cv/style_detail.css' %}">
+  </head>
+  <body>
+  <div class="container">
+
+    <h1 >{{ name }}</h1>
+
+
+
+    <p style="font-size:93%; margin-top: -2.5em;">{{address}}</p>
+    <p style="font-size:93%;margin-top:-1em">{{city}}</p>
+    <p style="font-size:93%;margin-top:-1em">+91-{{phone}}</p>
+    <p style="font-size:93%;margin-top:-1em">{{email}} </p>
+    <hr>
+
+    <h2><strong>PROFILE</strong></h2>
+    <p>{{shortBio}}</p>
+     <br>
+
+    <h2><strong>SKILLS</strong></h2>
+    {% with skills|split:' ' as skills %}
+     {% for skill in skills %}
+    <ul>
+      <li style="margin-top: -0.5em">{{skill}}</li>
+
+    </ul>
+
+     {% endfor %}
+    {% endwith %}
+     <br>
+
+    <h2><strong>EXPERIENCE</strong></h2>
+     <p><strong> {{companyname}} </strong></p>
+     <p>{{experience}}</p>
+     <br>
+
+    <h2><strong>EDUCATION</strong></h2>
+    <p><strong>{{university}}</strong></p>
+    <p>{{degreeName}}</p>
+    <br>
+
+    <h2><strong>PROJECT</strong></h2>
+    <p>{{project}}</p>
+
+
+    <a href="{% url 'cv:pdf' %}">Get Resume</a>
+
+  </body>
+</html>
